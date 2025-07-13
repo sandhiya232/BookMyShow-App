@@ -5,13 +5,14 @@ import axios from "axios";
 
 export default function MyBookings() {
   const [bookings, setBookings] = useState([]);
+  const API = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, async (user) => {
       if (user) {
         try {
           const res = await axios.get(
-            `https://movie-booking-backend-8koe.onrender.com/api/bookings/user/${user.email}`
+           `${API}/api/bookings/user/${user.email}`
           );
           setBookings(res.data.bookings);
         } catch (err) {

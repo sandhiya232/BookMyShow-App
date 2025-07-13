@@ -59,9 +59,11 @@ export default function Booking() {
     );
   };
 
+  const API = import.meta.env.VITE_API_URL;
+
   const handleConfirm = async () => {
     try {
-      await axios.post("https://movie-booking-backend-8koe.onrender.com/api/bookings", {
+      await axios.post(`${API}/api/bookings`, {
         movieId,
         userEmail,
         seats: selectedSeats,
